@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<descriptors>
+	<object class="model.Fornecedor">
+		<property name="id" id="true" auto="true" />
+		<property name="cpnj" />
+		<property name="pessoaId" />
+	</object>
+</descriptors>

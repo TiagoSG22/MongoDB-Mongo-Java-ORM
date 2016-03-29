@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<descriptors>
+	<object class="model.Pessoa">
+		<property name="id" id="true" auto="true" />
+		<property name="nome" />
+		<property name="tipoPessoa" />
+	</object>
+</descriptors>
