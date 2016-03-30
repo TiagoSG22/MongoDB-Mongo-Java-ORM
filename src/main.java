@@ -13,11 +13,11 @@ public class main {
 		FornecedorDAO fdao = new FornecedorDAO();
 		
 		/**Exemplo Pessoa Salva*/
-		//Pessoa p = new Pessoa();
-		//p.setNome("TiagoSG");
-		//p.setTipoPessoa(TipoPessoa.Fornecedor);
-		//p = pdao.save(p);
-		//System.out.println(p.getId());
+		Pessoa p = new Pessoa();
+		p.setNome("TiagoSG");
+		p.setTipoPessoa(TipoPessoa.Fornecedor);
+		p = pdao.save(p);
+		System.out.println(p.getId());
 		
 		
 		/**Exemplo Pessoa Find*/
