@@ -14,7 +14,7 @@ public class main {
 		
 		/**Exemplo Pessoa Salva*/
 		//Pessoa p = new Pessoa();
-		//p.setNome("Lenilton Jr. Coelho");
+		//p.setNome("TiagoSG");
 		//p.setTipoPessoa(TipoPessoa.Fornecedor);
 		//p = pdao.save(p);
 		//System.out.println(p.getId());
