@@ -10,7 +10,6 @@ import com.googlecode.mjorm.XmlDescriptorObjectMapper;
 
 public abstract class ObjectMapping {
 	
-	
 	public static XmlDescriptorObjectMapper getObjectMapping(){
 		
 		XmlDescriptorObjectMapper objectMapper = new XmlDescriptorObjectMapper();
@@ -32,5 +31,4 @@ public abstract class ObjectMapping {
 		
 		return objectMapper;
 	}
-
 }
