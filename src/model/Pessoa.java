@@ -26,5 +26,4 @@ public class Pessoa {
 	public void setTipoPessoa(TipoPessoa tipoPessoa) {
 		this.tipoPessoa = tipoPessoa;
 	}
-	
 }
