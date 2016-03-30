@@ -1,8 +1,11 @@
+import util.GrupoProduto;
 import util.TipoPessoa;
 import model.Fornecedor;
 import model.Pessoa;
+import model.Produto;
 import dao.FornecedorDAO;
 import dao.PessoaDAO;
+import dao.ProdutoDAO;
 
 
 public class main {
@@ -11,6 +14,7 @@ public class main {
 		
 		PessoaDAO pdao = new PessoaDAO();
 		FornecedorDAO fdao = new FornecedorDAO();
+		ProdutoDAO prdao = new ProdutoDAO();
 		
 		/**Exemplo Salva Pessoa Cliente e Fornecedor*/
 		Pessoa p = new Pessoa();
@@ -81,7 +85,24 @@ public class main {
 		p = pdao.get(idpessoa);
 		System.out.println("ID: "+p.getId());
 		System.out.println("Nome: "+p.getNome());
-		System.out.println("Tipo: "+p.getTipoPessoa()); 
+		System.out.println("Tipo: "+p.getTipoPessoa());
+		
+		/**Exemplo Produto Salva*/
+		Produto pr = new Produto();
+		pr.setNome("TV Sansung");
+		pr.setDescrição("40 Polegadas Full HD SmartTV");
+		pr.setGrupoProduto(GrupoProduto.Eletronicos);
+		f = fdao.get(fornecedorId);
+		pr.setFornecedorId(f);
+		pr = prdao.save(pr);
+		System.out.println();
+		System.out.println(">>>>>>>>>>>>>>>>>Salva Produto<<<<<<<<<<<<<<<<<<");
+		System.out.println("ID: "+pr.getId());
+		System.out.println("Nome: "+pr.getNome());
+		System.out.println("Descrição: "+pr.getDescrição());
+		System.out.println("Grupo Produto: "+pr.getGrupoProduto());
+		System.out.println("ID Fornecedor: "+pr.getFornecedorId().getId());
+		System.out.println("Nome Fornecedor: "+pr.getFornecedorId().getPessoaId().getNome());
 		
 	}
 }

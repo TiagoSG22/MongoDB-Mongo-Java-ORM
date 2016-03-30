@@ -16,6 +16,7 @@ public abstract class DaoBase<T> {
 	
 	protected final String FORNECEDOR = "fornecedor";
 	protected final String PESSOA = "pessoa";
+	protected final String PRODUTO = "produto";
 	protected final String DATABASE = "test";
 
 	private static XmlDescriptorObjectMapper objectMapper;

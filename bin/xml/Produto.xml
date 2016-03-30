@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<descriptors>
+	<object class="model.Produto">
+		<property name="id" id="true" auto="true" />
+		<property name="nome" />
+		<property name="descrição" />
+		<property name="fornecedorId" />
+		<property name="grupoProduto" />
+	</object>
+</descriptors>

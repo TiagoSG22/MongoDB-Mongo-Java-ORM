@@ -17,6 +17,7 @@ public abstract class ObjectMapping {
 		try {
 			objectMapper.addXmlObjectDescriptor(new File("src/xml/Pessoa.xml"));
 			objectMapper.addXmlObjectDescriptor(new File("src/xml/Fornecedor.xml"));
+			objectMapper.addXmlObjectDescriptor(new File("src/xml/Produto.xml"));
 		} catch (XPathExpressionException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
