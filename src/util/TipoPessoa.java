@@ -10,7 +10,7 @@ public enum TipoPessoa {
 		this.nome=nome;
 	}
 
-	public String getA() {
+	public String getNome() {
 		return nome;
 	}
 }
