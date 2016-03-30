@@ -6,6 +6,10 @@ import model.Produto;
 
 public class ProdutoDAO extends DaoBase<Produto> {
 
+	public ProdutoDAO() {
+		super();
+	}
+
 	@Override
 	public Produto save(Produto produto) {
 		return this.dao.createObject(PRODUTO, produto);
