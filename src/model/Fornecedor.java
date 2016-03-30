@@ -24,7 +24,4 @@ public class Fornecedor {
 	public void setPessoaId(Pessoa pessoaId) {
 		this.pessoaId = pessoaId;
 	}
-	
-	
-
 }
