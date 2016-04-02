@@ -1,5 +1,7 @@
 package model;
 
+import util.ParJson;
+
 public class Fornecedor {
 	
 	private String id;
@@ -23,5 +25,10 @@ public class Fornecedor {
 	}
 	public void setPessoaId(Pessoa pessoaId) {
 		this.pessoaId = pessoaId;
+	}
+	
+	@Override
+	public String toString(){
+		return ParJson.gson.toJson(this);
 	}
 }

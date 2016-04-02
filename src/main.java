@@ -24,9 +24,7 @@ public class main {
 		String idpessoa = p.getId();
 		System.out.println();
 		System.out.println(">>>>>>>>>>>>>>>>>Salva Pessoa Cliente<<<<<<<<<<<<<<<<<<");
-		System.out.println("ID: "+p.getId()); //ID Pessoa Cliente
-		System.out.println("Nome: "+p.getNome());
-		System.out.println("Tipo: "+p.getTipoPessoa());
+		System.out.println(p.toString());
 		
 		p = new Pessoa();
 		p.setNome("TiagoSG 2");
@@ -35,17 +33,13 @@ public class main {
 		String idPessoaFornecedor = p.getId();
 		System.out.println();
 		System.out.println(">>>>>>>>>>>>>>>>>Salva Pessoa Fornecedor<<<<<<<<<<<<<<<<<<");
-		System.out.println("ID: "+p.getId()); //ID Pessoa Fornecedor
-		System.out.println("Nome: "+p.getNome());
-		System.out.println("Tipo: "+p.getTipoPessoa());
+		System.out.println(p.toString());
 		
 		/**Exemplo Find Pessoa*/
 		p = pdao.get(idpessoa);
 		System.out.println();
 		System.out.println(">>>>>>>>>>>>>>>>>Find Pessoa Cliente<<<<<<<<<<<<<<<<<<");
-		System.out.println("ID: "+p.getId());
-		System.out.println("Nome: "+p.getNome());
-		System.out.println("Tipo: "+p.getTipoPessoa());
+		System.out.println(p.toString());
 		
 		/**Exemplo Fornecedor Salva*/
 		Fornecedor f = new Fornecedor();
@@ -56,36 +50,24 @@ public class main {
 		String fornecedorId = f.getId();
 		System.out.println();
 		System.out.println(">>>>>>>>>>>>>>>>>Salva Fornecedor<<<<<<<<<<<<<<<<<<");
-		System.out.println("ID Fornecedor: "+f.getId());
-		System.out.println("CPNJ: "+f.getCpnj());
-		System.out.println("ID Pessoa: "+f.getPessoaId().getId());
-		System.out.println("Nome: "+f.getPessoaId().getNome());
-		System.out.println("Tipo: "+f.getPessoaId().getTipoPessoa());
+		System.out.println(f.toString());
 		
 		
 		/**Exemplo Fornecedor Find*/
 		f = fdao.get(fornecedorId);
 		System.out.println();
 		System.out.println(">>>>>>>>>>>>>>>>>Find Fornecedor<<<<<<<<<<<<<<<<<<");
-		System.out.println("ID: "+f.getId());
-		System.out.println("CPNJ: "+f.getCpnj());
-		System.out.println("ID Pessoa: "+f.getPessoaId().getId());
-		System.out.println("Nome: "+f.getPessoaId().getNome());
-		System.out.println("Tipo: "+f.getPessoaId().getTipoPessoa());
+		System.out.println(f.toString());
 		
 		/**Exemplo Pessoa UPDATE*/
 		System.out.println();
 		System.out.println(">>>>>>>>>>>>>>>>>UPDATE Pessoa<<<<<<<<<<<<<<<<<<");
 		p = pdao.get(idpessoa);
-		System.out.println("ID: "+p.getId());
-		System.out.println("Nome: "+p.getNome());
-		System.out.println("Tipo: "+p.getTipoPessoa()); 
+		System.out.println(p.toString()); //mostro antes do update
 		p.setTipoPessoa(TipoPessoa.Fornecedor);
 		pdao.update(p);
 		p = pdao.get(idpessoa);
-		System.out.println("ID: "+p.getId());
-		System.out.println("Nome: "+p.getNome());
-		System.out.println("Tipo: "+p.getTipoPessoa());
+		System.out.println(p.toString());
 		
 		/**Exemplo Produto Salva*/
 		Produto pr = new Produto();
@@ -97,12 +79,7 @@ public class main {
 		pr = prdao.save(pr);
 		System.out.println();
 		System.out.println(">>>>>>>>>>>>>>>>>Salva Produto<<<<<<<<<<<<<<<<<<");
-		System.out.println("ID: "+pr.getId());
-		System.out.println("Nome: "+pr.getNome());
-		System.out.println("Descrição: "+pr.getDescrição());
-		System.out.println("Grupo Produto: "+pr.getGrupoProduto());
-		System.out.println("ID Fornecedor: "+pr.getFornecedorId().getId());
-		System.out.println("Nome Fornecedor: "+pr.getFornecedorId().getPessoaId().getNome());
+		System.out.println(pr.toString());
 		
 	}
 }

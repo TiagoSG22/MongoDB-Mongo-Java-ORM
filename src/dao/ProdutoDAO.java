@@ -24,5 +24,5 @@ public class ProdutoDAO extends DaoBase<Produto> {
 	public Produto get(String objectId) {
 		return this.dao.readObject(PRODUTO,new ObjectId(objectId),Produto.class);
 	}
-
+	
 }

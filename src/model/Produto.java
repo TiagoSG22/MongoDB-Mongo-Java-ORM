@@ -1,6 +1,7 @@
 package model;
 
 import util.GrupoProduto;
+import util.ParJson;
 
 public class Produto {
 	
@@ -41,4 +42,8 @@ public class Produto {
 		this.grupoProduto = grupoProduto;
 	}
 	
+	@Override
+	public String toString(){
+		return ParJson.gson.toJson(this);
+	}
 }

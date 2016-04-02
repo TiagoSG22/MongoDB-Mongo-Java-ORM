@@ -1,5 +1,6 @@
 package model;
 
+import util.ParJson;
 import util.TipoPessoa;
 
 public class Pessoa {
@@ -25,5 +26,10 @@ public class Pessoa {
 	}
 	public void setTipoPessoa(TipoPessoa tipoPessoa) {
 		this.tipoPessoa = tipoPessoa;
+	}
+	
+	@Override
+	public String toString(){
+		return ParJson.gson.toJson(this);
 	}
 }
