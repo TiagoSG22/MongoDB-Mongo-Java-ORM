@@ -113,6 +113,7 @@ public class main {
 		NotaFiscal nf = new NotaFiscal();
 		nf.setImposto(5.0);
 		nf = nfdao.save(nf);
+		String notaFiscalId = nf.getId();
 		System.out.println();
 		System.out.println(">>>>>>>>>>>>>>>>>Salva NotaFiscal<<<<<<<<<<<<<<<<<<");
 		System.out.println(nf.toString());
@@ -121,11 +122,12 @@ public class main {
 		Venda v = new Venda();
 		Pessoa pc = pdao.get(idPessoaCliente); //Pessoa Cliente
 		Pessoa pf = pdao.get(idPessoaFuncionario); //Pessoa Funcionario
-		Produto pro = prdao.get(produtoId); //Produto
-		v.setNota_fiscal(nf);
+		pr = prdao.get(produtoId); //Produto
+		nf = nfdao.get(notaFiscalId); //NotaFiscal;
 		v.setPessoaId_cliente(pc);
 		v.setPessoaId_funcionario(pf);
-		v.setProdutoId(pro);
+		v.setProdutoId(pr);
+		v.setNota_fiscal(nf);
 		v.setValor_venda(1999.99);
 		v = vdao.save(v);
 		String vendaid = v.getId();
