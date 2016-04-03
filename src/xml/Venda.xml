@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<descriptors>
+	<object class="model.Venda">
+		<property name="id" id="true" auto="true" />
+		<property name="pessoaId_cliente" />
+		<property name="pessoaId_funcionario" />
+		<property name="produtoId" />
+		<property name="nota_fiscal" />
+		<property name="valor_venda" />
+	</object>
+</descriptors>

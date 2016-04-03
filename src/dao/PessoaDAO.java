@@ -13,17 +13,17 @@ public class PessoaDAO extends DaoBase<Pessoa>{
 
 	@Override
 	public Pessoa save(Pessoa pessoa) {
-		return this.dao.createObject(PESSOA, pessoa);
+		return this.dao.createObject(this.PESSOA, pessoa);
 	}
 
 	@Override
 	public void update(Pessoa pessoa) {
-		this.dao.updateObject(PESSOA, new ObjectId(pessoa.getId()), pessoa);
+		this.dao.updateObject(this.PESSOA, new ObjectId(pessoa.getId()), pessoa);
 	}
 
 	@Override
 	public Pessoa get(String objectId) {
-		return this.dao.readObject(PESSOA,new ObjectId(objectId),Pessoa.class);
+		return this.dao.readObject(this.PESSOA,new ObjectId(objectId),Pessoa.class);
 	}
 	
 }

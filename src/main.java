@@ -1,11 +1,15 @@
 import util.GrupoProduto;
 import util.TipoPessoa;
 import model.Fornecedor;
+import model.NotaFiscal;
 import model.Pessoa;
 import model.Produto;
+import model.Venda;
 import dao.FornecedorDAO;
+import dao.NotaFiscalDAO;
 import dao.PessoaDAO;
 import dao.ProdutoDAO;
+import dao.VendaDAO;
 
 
 public class main {
@@ -15,8 +19,10 @@ public class main {
 		PessoaDAO pdao = new PessoaDAO();
 		FornecedorDAO fdao = new FornecedorDAO();
 		ProdutoDAO prdao = new ProdutoDAO();
+		NotaFiscalDAO nfdao = new NotaFiscalDAO();
+		VendaDAO vdao = new VendaDAO();
 		
-		/**Exemplo Salva Pessoa Cliente e Fornecedor*/
+		/**Exemplo Salva Pessoa Cliente e Fornecedor e Funcionario*/
 		Pessoa p = new Pessoa();
 		p.setNome("TiagoSG");
 		p.setTipoPessoa(TipoPessoa.Cliente);
@@ -35,13 +41,34 @@ public class main {
 		System.out.println(">>>>>>>>>>>>>>>>>Salva Pessoa Fornecedor<<<<<<<<<<<<<<<<<<");
 		System.out.println(p.toString());
 		
+		
+		p = new Pessoa();
+		p.setNome("TiagoSG 3");
+		p.setTipoPessoa(TipoPessoa.Funcionario);
+		p = pdao.save(p);
+		String idPessoaFuncionario = p.getId();
+		System.out.println();
+		System.out.println(">>>>>>>>>>>>>>>>>Salva Pessoa Funcionarior<<<<<<<<<<<<<<<<<<");
+		System.out.println(p.toString());
+		
+		
+		p = new Pessoa();
+		p.setNome("TiagoSG 4");
+		p.setTipoPessoa(TipoPessoa.Cliente);
+		p = pdao.save(p);
+		String idPessoaCliente = p.getId();
+		System.out.println();
+		System.out.println(">>>>>>>>>>>>>>>>>Salva Pessoa Cliente 2<<<<<<<<<<<<<<<<<<");
+		System.out.println(p.toString());
+		
+		
 		/**Exemplo Find Pessoa*/
 		p = pdao.get(idpessoa);
 		System.out.println();
 		System.out.println(">>>>>>>>>>>>>>>>>Find Pessoa Cliente<<<<<<<<<<<<<<<<<<");
 		System.out.println(p.toString());
 		
-		/**Exemplo Fornecedor Salva*/
+		/**Exemplo Salva Fornecedor*/
 		Fornecedor f = new Fornecedor();
 		f.setCpnj("999999999");
 		p = pdao.get(idPessoaFornecedor); //get Pessoa Fornecedor
@@ -53,13 +80,13 @@ public class main {
 		System.out.println(f.toString());
 		
 		
-		/**Exemplo Fornecedor Find*/
+		/**Exemplo Find Fornecedor*/
 		f = fdao.get(fornecedorId);
 		System.out.println();
 		System.out.println(">>>>>>>>>>>>>>>>>Find Fornecedor<<<<<<<<<<<<<<<<<<");
 		System.out.println(f.toString());
 		
-		/**Exemplo Pessoa UPDATE*/
+		/**Exemplo UPDATE Pessoa*/
 		System.out.println();
 		System.out.println(">>>>>>>>>>>>>>>>>UPDATE Pessoa<<<<<<<<<<<<<<<<<<");
 		p = pdao.get(idpessoa);
@@ -69,7 +96,7 @@ public class main {
 		p = pdao.get(idpessoa);
 		System.out.println(p.toString());
 		
-		/**Exemplo Produto Salva*/
+		/**Exemplo Salva Produto*/
 		Produto pr = new Produto();
 		pr.setNome("TV Sansung");
 		pr.setDescrição("40 Polegadas Full HD SmartTV");
@@ -77,9 +104,39 @@ public class main {
 		f = fdao.get(fornecedorId);
 		pr.setFornecedorId(f);
 		pr = prdao.save(pr);
+		String produtoId = pr.getId();
 		System.out.println();
 		System.out.println(">>>>>>>>>>>>>>>>>Salva Produto<<<<<<<<<<<<<<<<<<");
 		System.out.println(pr.toString());
 		
+		/**Exemplo Salva NotaFiscal*/
+		NotaFiscal nf = new NotaFiscal();
+		nf.setImposto(5.0);
+		nf = nfdao.save(nf);
+		System.out.println();
+		System.out.println(">>>>>>>>>>>>>>>>>Salva NotaFiscal<<<<<<<<<<<<<<<<<<");
+		System.out.println(nf.toString());
+		
+		/**Exemplo Salva Venda*/
+		Venda v = new Venda();
+		Pessoa pc = pdao.get(idPessoaCliente); //Pessoa Cliente
+		Pessoa pf = pdao.get(idPessoaFuncionario); //Pessoa Funcionario
+		Produto pro = prdao.get(produtoId); //Produto
+		v.setNota_fiscal(nf);
+		v.setPessoaId_cliente(pc);
+		v.setPessoaId_funcionario(pf);
+		v.setProdutoId(pro);
+		v.setValor_venda(1999.99);
+		v = vdao.save(v);
+		String vendaid = v.getId();
+		System.out.println();
+		System.out.println(">>>>>>>>>>>>>>>>>Salva Venda<<<<<<<<<<<<<<<<<<");
+		System.out.println(v.toString());
+		
+		/**Exemplo Find Venda*/
+		v = vdao.get(vendaid);
+		System.out.println();
+		System.out.println(">>>>>>>>>>>>>>>>>Find Venda<<<<<<<<<<<<<<<<<<");
+		System.out.println(v.toString());
 	}
 }

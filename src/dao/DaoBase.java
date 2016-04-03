@@ -15,6 +15,8 @@ public abstract class DaoBase<T> {
 	protected MongoDao dao;
 	
 	protected final String FORNECEDOR = "fornecedor";
+	protected final String VENDA = "venda";
+	protected final String NOTA_FISCAL = "notaFiscal";
 	protected final String PESSOA = "pessoa";
 	protected final String PRODUTO = "produto";
 	protected final String DATABASE = "test";

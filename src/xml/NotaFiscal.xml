@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<descriptors>
+	<object class="model.NotaFiscal">
+		<property name="id" id="true" auto="true" />
+		<property name="imposto" />
+		<property name="num_NF" />
+	</object>
+</descriptors>
