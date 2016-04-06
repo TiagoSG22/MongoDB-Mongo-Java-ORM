@@ -1,5 +1,6 @@
 package model;
 
+import util.MD5;
 import util.ParJson;
 
 public class Fornecedor {
@@ -7,6 +8,7 @@ public class Fornecedor {
 	private String id;
 	private String cpnj;
 	private Pessoa pessoaId;
+	private String hash;
 	
 	public String getId() {
 		return id;
@@ -25,6 +27,12 @@ public class Fornecedor {
 	}
 	public void setPessoaId(Pessoa pessoaId) {
 		this.pessoaId = pessoaId;
+	}
+	public String getHash() {
+		return MD5.md5(id+cpnj+pessoaId.getHash());
+	}
+	public void setHash(String hash) {
+		this.hash = hash;
 	}
 	
 	@Override

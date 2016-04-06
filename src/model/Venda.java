@@ -1,5 +1,6 @@
 package model;
 
+import util.MD5;
 import util.ParJson;
 
 public class Venda {
@@ -10,6 +11,7 @@ public class Venda {
 	private Produto produtoId;
 	private NotaFiscal nota_fiscal;
 	private double valor_venda;
+	private String hash;
 	
 	public String getId() {
 		return id;
@@ -46,6 +48,12 @@ public class Venda {
 	}
 	public void setNota_fiscal(NotaFiscal nota_fiscal) {
 		this.nota_fiscal = nota_fiscal;
+	}
+	public String getHash() {
+		return MD5.md5(id+pessoaId_cliente.getHash()+pessoaId_funcionario.getHash()+produtoId.getHash()+nota_fiscal.getHash()+valor_venda);
+	}
+	public void setHash(String hash) {
+		this.hash = hash;
 	}
 	
 	@Override

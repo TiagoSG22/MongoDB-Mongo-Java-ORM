@@ -25,5 +25,4 @@ public class PessoaDAO extends DaoBase<Pessoa>{
 	public Pessoa get(String objectId) {
 		return this.dao.readObject(this.PESSOA,new ObjectId(objectId),Pessoa.class);
 	}
-	
 }

@@ -1,5 +1,6 @@
 package model;
 
+import util.MD5;
 import util.ParJson;
 import util.TipoPessoa;
 
@@ -8,6 +9,7 @@ public class Pessoa {
 	private String id;
 	private String nome;
 	private TipoPessoa tipoPessoa;
+	private String hash;
 	
 	public String getId() {
 		return id;
@@ -26,6 +28,12 @@ public class Pessoa {
 	}
 	public void setTipoPessoa(TipoPessoa tipoPessoa) {
 		this.tipoPessoa = tipoPessoa;
+	}
+	public String getHash() {
+		return MD5.md5(id+nome+tipoPessoa);
+	}
+	public void setHash(String hash) {
+		this.hash = hash;
 	}
 	
 	@Override

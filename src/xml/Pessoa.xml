@@ -4,5 +4,6 @@
 		<property name="id" id="true" auto="true" />
 		<property name="nome" />
 		<property name="tipoPessoa" />
+		<property name="hash" />
 	</object>
 </descriptors>

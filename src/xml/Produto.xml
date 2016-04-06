@@ -6,5 +6,6 @@
 		<property name="descrição" />
 		<property name="fornecedorId" />
 		<property name="grupoProduto" />
+		<property name="hash" />
 	</object>
 </descriptors>

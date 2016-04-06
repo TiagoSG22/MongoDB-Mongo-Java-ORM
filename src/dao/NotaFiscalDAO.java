@@ -25,5 +25,4 @@ public class NotaFiscalDAO extends DaoBase<NotaFiscal>{
 	public NotaFiscal get(String objectId) {
 		return this.dao.readObject(this.NOTA_FISCAL,new ObjectId(objectId),NotaFiscal.class);
 	}
-	
 }

@@ -3,6 +3,7 @@ package dao;
 import org.bson.types.ObjectId;
 
 import model.Fornecedor;
+import model.Pessoa;
 
 public class FornecedorDAO extends DaoBase<Fornecedor>{
 	
@@ -22,7 +23,14 @@ public class FornecedorDAO extends DaoBase<Fornecedor>{
 
 	@Override
 	public Fornecedor get(String objectId) {
-		return this.dao.readObject(this.FORNECEDOR,new ObjectId(objectId),Fornecedor.class);
+		Fornecedor f = this.dao.readObject(this.FORNECEDOR,new ObjectId(objectId),Fornecedor.class);
+		Pessoa p = new PessoaDAO().get(f.getPessoaId().getId());
+		
+		if(!f.getPessoaId().getHash().equals(p.getHash())){
+			f.setPessoaId(p);
+			update(f);
+		}
+		
+		return f;
 	}
-
 }

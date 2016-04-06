@@ -4,5 +4,6 @@
 		<property name="id" id="true" auto="true" />
 		<property name="imposto" />
 		<property name="num_NF" />
+		<property name="hash" />
 	</object>
 </descriptors>

@@ -12,29 +12,21 @@ import com.mongodb.MongoURI;
 
 public abstract class DaoBase<T> {
 	
-	protected MongoDao dao;
-	
 	protected final String FORNECEDOR = "fornecedor";
 	protected final String VENDA = "venda";
 	protected final String NOTA_FISCAL = "notaFiscal";
 	protected final String PESSOA = "pessoa";
 	protected final String PRODUTO = "produto";
-	protected final String DATABASE = "test";
+	protected static final String DATABASE = "test";
 
-	private static XmlDescriptorObjectMapper objectMapper;
-	private static Mongo mongo;
-	private static DB db;
+	private static XmlDescriptorObjectMapper objectMapper = ObjectMapping.getObjectMapping();
+	private static Mongo mongo =new Mongo(new MongoURI("mongodb://localhost/"+DATABASE));
+	private static DB db = mongo.getDB(DATABASE);
+	protected static final MongoDao dao = new MongoDaoImpl(db, objectMapper);
 	
-	DaoBase(){
-		mongo = new Mongo(new MongoURI("mongodb://localhost/"+DATABASE));
-		db = mongo.getDB(DATABASE);
-		objectMapper = ObjectMapping.getObjectMapping();
-		dao = new MongoDaoImpl(db, objectMapper);
-	}
-	
+
 	
 	public abstract T save(T obj);
 	public abstract void update(T obj);
 	public abstract T get(String objectId);
-
 }

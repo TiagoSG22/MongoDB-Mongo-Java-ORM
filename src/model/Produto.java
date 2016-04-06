@@ -1,6 +1,7 @@
 package model;
 
 import util.GrupoProduto;
+import util.MD5;
 import util.ParJson;
 
 public class Produto {
@@ -10,6 +11,7 @@ public class Produto {
 	private String descrição;
 	private Fornecedor fornecedorId;
 	private GrupoProduto grupoProduto;
+	private String hash;
 	
 	public String getId() {
 		return id;
@@ -40,6 +42,12 @@ public class Produto {
 	}
 	public void setGrupoProduto(GrupoProduto grupoProduto) {
 		this.grupoProduto = grupoProduto;
+	}
+	public String getHash() {
+		return MD5.md5(id+nome+descrição+fornecedorId.getHash()+grupoProduto);
+	}
+	public void setHash(String hash) {
+		this.hash = hash;
 	}
 	
 	@Override

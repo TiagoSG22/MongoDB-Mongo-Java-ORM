@@ -140,5 +140,30 @@ public class main {
 		System.out.println();
 		System.out.println(">>>>>>>>>>>>>>>>>Find Venda<<<<<<<<<<<<<<<<<<");
 		System.out.println(v.toString());
+		
+		/**Exemplo de Update Cascata das coleções*/
+		System.out.println(">>>>>>>>>>>>>>>>>Exemplo Get Atualização em Cascata<<<<<<<<<<<<<<<<<<");
+		pc = pdao.get(idPessoaCliente); //Pessoa Cliente
+		pf = pdao.get(idPessoaFuncionario); //Pessoa Funcionario
+		
+		System.out.println(pc.toString()); //Mostro antes da mudança
+		System.out.println(pf.toString()); //Mostro antes da mudança
+		
+		pc.setNome("Mudei nome Cliente");
+		pf.setNome("Mudei nome Funcionario");
+		pdao.update(pc); //update
+		pdao.update(pf); //update
+		
+		pc = pdao.get(idPessoaCliente); //Pessoa Cliente
+		pf = pdao.get(idPessoaFuncionario); //Pessoa Funcionario
+		
+		System.out.println(pc.toString()); //Mostro que mudou
+		System.out.println(pf.toString()); //Mostro que mudou
+		
+		/**
+		 * Neste momento existe uma inconsistencia entre Venda e Pessoa Cliente e Pessoa Funcionario no Banco.
+		 **/
+		v = vdao.get(vendaid); //se o hash tiver diferentes entre as coleções ele faz updates necessarios.
+		System.out.println(v.toString()); //ja retornou atualizado!*/
 	}
 }

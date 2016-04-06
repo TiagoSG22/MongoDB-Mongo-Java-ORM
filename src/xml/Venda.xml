@@ -7,5 +7,6 @@
 		<property name="produtoId" />
 		<property name="nota_fiscal" />
 		<property name="valor_venda" />
+		<property name="hash" />
 	</object>
 </descriptors>

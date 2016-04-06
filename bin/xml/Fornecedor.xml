@@ -4,5 +4,6 @@
 		<property name="id" id="true" auto="true" />
 		<property name="cpnj" />
 		<property name="pessoaId" />
+		<property name="hash" />
 	</object>
 </descriptors>
