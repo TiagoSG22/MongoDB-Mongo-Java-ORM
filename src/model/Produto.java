@@ -54,4 +54,13 @@ public class Produto {
 	public String toString(){
 		return ParJson.gson.toJson(this);
 	}
+	
+	@Override
+	public boolean equals(Object o){
+	    if(o == null) return false;
+	    if(!(o instanceof Produto)) return false;
+	    
+	    Produto other = (Produto) o;
+	    return this.getHash().equals(other.getHash());
+	}
 }

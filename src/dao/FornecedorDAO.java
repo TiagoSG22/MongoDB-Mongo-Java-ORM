@@ -6,10 +6,6 @@ import model.Fornecedor;
 import model.Pessoa;
 
 public class FornecedorDAO extends DaoBase<Fornecedor>{
-	
-	public FornecedorDAO(){
-		super();
-	}
 
 	@Override
 	public Fornecedor save(Fornecedor fornecedor) {
@@ -23,14 +19,24 @@ public class FornecedorDAO extends DaoBase<Fornecedor>{
 
 	@Override
 	public Fornecedor get(String objectId) {
-		Fornecedor f = this.dao.readObject(this.FORNECEDOR,new ObjectId(objectId),Fornecedor.class);
-		Pessoa p = new PessoaDAO().get(f.getPessoaId().getId());
+		Fornecedor fornecedor = this.dao.readObject(this.FORNECEDOR,new ObjectId(objectId),Fornecedor.class);
+		return Atualizar(fornecedor);
+	}
+	
+	@Override
+	public void delete(String objectId) {
+		this.dao.deleteObject(this.FORNECEDOR, new ObjectId(objectId));
+	}
+	
+	@Override
+	protected Fornecedor Atualizar(Fornecedor fornecedor){
+		Pessoa produto = new PessoaDAO().get(fornecedor.getPessoaId().getId());
 		
-		if(!f.getPessoaId().getHash().equals(p.getHash())){
-			f.setPessoaId(p);
-			update(f);
+		if(!fornecedor.getPessoaId().equals(produto)){
+			fornecedor.setPessoaId(produto);
+			update(fornecedor);
 		}
 		
-		return f;
+		return fornecedor;
 	}
 }

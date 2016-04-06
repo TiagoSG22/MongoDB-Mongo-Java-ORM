@@ -60,4 +60,13 @@ public class Venda {
 	public String toString(){
 		return ParJson.gson.toJson(this);
 	}
+	
+	@Override
+	public boolean equals(Object o){
+	    if(o == null) return false;
+	    if(!(o instanceof Venda)) return false;
+	    
+	    Venda other = (Venda) o;
+	    return this.getHash().equals(other.getHash());
+	}
 }

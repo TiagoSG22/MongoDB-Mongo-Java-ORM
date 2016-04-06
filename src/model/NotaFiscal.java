@@ -39,4 +39,13 @@ public class NotaFiscal {
 	public String toString(){
 		return ParJson.gson.toJson(this);
 	}
+	
+	@Override
+	public boolean equals(Object o){
+	    if(o == null) return false;
+	    if(!(o instanceof NotaFiscal)) return false;
+	    
+	    NotaFiscal other = (NotaFiscal) o;
+	    return this.getHash().equals(other.getHash());
+	}
 }

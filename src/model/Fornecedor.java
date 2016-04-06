@@ -39,4 +39,13 @@ public class Fornecedor {
 	public String toString(){
 		return ParJson.gson.toJson(this);
 	}
+	
+	@Override
+	public boolean equals(Object o){
+	    if(o == null) return false;
+	    if(!(o instanceof Fornecedor)) return false;
+	    
+	    Fornecedor other = (Fornecedor) o;
+	    return this.getHash().equals(other.getHash());
+	}
 }

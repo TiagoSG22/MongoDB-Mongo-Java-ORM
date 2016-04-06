@@ -5,11 +5,6 @@ import model.Pessoa;
 import org.bson.types.ObjectId;
 
 public class PessoaDAO extends DaoBase<Pessoa>{
-	
-	
-	public PessoaDAO(){
-		super();
-	}
 
 	@Override
 	public Pessoa save(Pessoa pessoa) {
@@ -24,5 +19,14 @@ public class PessoaDAO extends DaoBase<Pessoa>{
 	@Override
 	public Pessoa get(String objectId) {
 		return this.dao.readObject(this.PESSOA,new ObjectId(objectId),Pessoa.class);
+	}
+	
+	public void delete(String objectId){
+		this.dao.deleteObject(this.PESSOA,new ObjectId(objectId));
+	}
+	
+	@Override
+	protected Pessoa Atualizar(Pessoa pessoa){
+		return null; //Não se Aplica
 	}
 }

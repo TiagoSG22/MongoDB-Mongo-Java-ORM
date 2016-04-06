@@ -24,9 +24,20 @@ public abstract class DaoBase<T> {
 	private static DB db = mongo.getDB(DATABASE);
 	protected static final MongoDao dao = new MongoDaoImpl(db, objectMapper);
 	
-
-	
 	public abstract T save(T obj);
 	public abstract void update(T obj);
 	public abstract T get(String objectId);
+	
+	/**
+	 * Desafio: Não permitir deletar objetos que tem relacionamentos em outras coleções
+	 **/
+	public abstract void delete(String objectId);
+	
+	/**
+	 * Verifica se os hash dos documentos e suas coleções tiveram mudanças.
+	 * Se tiver ele atualiza seus respectivos objetos 
+	 * para garantir a consistência do Banco de Dados
+	 * Metodo para se trabalhar junto ao T get(String objectId)
+	 **/
+	protected abstract T Atualizar(T obj);
 }

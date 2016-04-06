@@ -8,10 +8,6 @@ import model.Produto;
 import model.Venda;
 
 public class VendaDAO extends DaoBase<Venda> {
-	
-	public VendaDAO(){
-		super();
-	}
 
 	@Override
 	public Venda save(Venda venda) {
@@ -26,6 +22,16 @@ public class VendaDAO extends DaoBase<Venda> {
 	@Override
 	public Venda get(String objectId) {
 		Venda venda = this.dao.readObject(this.VENDA,new ObjectId(objectId),Venda.class);
+		return Atualizar(venda);
+	}
+	
+	@Override
+	public void delete(String objectId) {
+		this.dao.deleteObject(this.VENDA, new ObjectId(objectId));
+	}
+	
+	@Override
+	protected Venda Atualizar(Venda venda){
 		PessoaDAO pdao = new PessoaDAO();
 		Pessoa pc = pdao.get(venda.getPessoaId_cliente().getId()); //Pessoa Cliente
 		Pessoa pf = pdao.get(venda.getPessoaId_funcionario().getId()); //Pessoa Funcionario
@@ -34,19 +40,19 @@ public class VendaDAO extends DaoBase<Venda> {
 		
 		boolean ok=false;
 		
-		if(!venda.getPessoaId_cliente().getHash().equals(pc.getHash())){
+		if(!venda.getPessoaId_cliente().equals(pc)){
 			venda.setPessoaId_cliente(pc);
 			ok=true;
 		}
-		if(!venda.getPessoaId_funcionario().getHash().equals(pf.getHash())){
+		if(!venda.getPessoaId_funcionario().equals(pf)){
 			venda.setPessoaId_funcionario(pf);
 			ok=true;
 		}
-		if(!venda.getProdutoId().getHash().equals(p.getHash())){
+		if(!venda.getProdutoId().equals(p)){
 			venda.setProdutoId(p);
 			ok=true;
 		}
-		if(!venda.getNota_fiscal().getHash().equals(nf.getHash())){
+		if(!venda.getNota_fiscal().equals(nf)){
 			venda.setNota_fiscal(nf);
 			ok=true;
 		}

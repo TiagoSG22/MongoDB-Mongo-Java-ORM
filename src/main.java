@@ -146,24 +146,34 @@ public class main {
 		pc = pdao.get(idPessoaCliente); //Pessoa Cliente
 		pf = pdao.get(idPessoaFuncionario); //Pessoa Funcionario
 		
-		System.out.println(pc.toString()); //Mostro antes da mudança
-		System.out.println(pf.toString()); //Mostro antes da mudança
+		/**Mostro antes da mudança*/
+		System.out.println(pc.toString());
+		System.out.println(pf.toString());
 		
 		pc.setNome("Mudei nome Cliente");
 		pf.setNome("Mudei nome Funcionario");
-		pdao.update(pc); //update
-		pdao.update(pf); //update
+		pdao.update(pc);
+		pdao.update(pf);
 		
-		pc = pdao.get(idPessoaCliente); //Pessoa Cliente
-		pf = pdao.get(idPessoaFuncionario); //Pessoa Funcionario
+		pc = pdao.get(idPessoaCliente);
+		pf = pdao.get(idPessoaFuncionario);
 		
-		System.out.println(pc.toString()); //Mostro que mudou
-		System.out.println(pf.toString()); //Mostro que mudou
+		/**Mostro que mudou*/
+		System.out.println(pc.toString());
+		System.out.println(pf.toString());
 		
 		/**
 		 * Neste momento existe uma inconsistencia entre Venda e Pessoa Cliente e Pessoa Funcionario no Banco.
 		 **/
 		v = vdao.get(vendaid); //se o hash tiver diferentes entre as coleções ele faz updates necessarios.
-		System.out.println(v.toString()); //ja retornou atualizado!*/
+		System.out.println(v.toString()); //ja retornou atualizado!
+		
+		
+		System.out.println(">>>>>>>>>>>>>>>>>Exemplo Deletar<<<<<<<<<<<<<<<<<<");
+		p=pdao.get(idpessoa);
+		System.out.println(p.toString()); 
+		pdao.delete(idpessoa);
+		p=pdao.get(idpessoa);
+		System.out.println(p.toString()); //Exception NullPointerException 
 	}
 }
