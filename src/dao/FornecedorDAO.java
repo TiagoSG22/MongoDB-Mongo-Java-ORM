@@ -30,10 +30,10 @@ public class FornecedorDAO extends DaoBase<Fornecedor>{
 	
 	@Override
 	protected Fornecedor Atualizar(Fornecedor fornecedor){
-		Pessoa produto = new PessoaDAO().get(fornecedor.getPessoaId().getId());
+		Pessoa pessoa = new PessoaDAO().get(fornecedor.getPessoaId().getId());
 		
-		if(!fornecedor.getPessoaId().equals(produto)){
-			fornecedor.setPessoaId(produto);
+		if(!fornecedor.getPessoaId().equals(pessoa)){
+			fornecedor.setPessoaId(pessoa);
 			update(fornecedor);
 		}
 		
